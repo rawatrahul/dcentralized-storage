@@ -133,6 +133,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
         """
         path = self.translate_path(self.path)
+
         f = None
         if os.path.isdir(path):
             if not self.path.endswith('/'):
@@ -286,6 +287,8 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 def serve(HandlerClass=SimpleHTTPRequestHandler,
           ServerClass=http.server.HTTPServer):
     print("Starting file server at localhost:8000")
+    os.chdir("../data")
+    print(os.listdir())
     http.server.test(HandlerClass, ServerClass)
 
 
